@@ -1,19 +1,15 @@
 import Transform from "."
-import { List } from "immutable"
 import * as vfs from "vinyl-fs"
-import { obj as intoStream } from "into-stream"
-import { array as getStream } from "get-stream"
+import * as most from "most"
+import { fromObservable } from "../stream-helpers"
 
 function destTransform(folder: string, options?: vfs.DestOptions) {
-  return (async (files = List()) => {
-    const files$ =
-      intoStream(files.toJS())
-        .pipe(vfs.dest(folder, options))
-
-    await getStream(files$)
-
-    return files
-  }) as Transform
+  const f: Transform = files => {
+    const [observable, stream] = fromObservable(files)
+    stream.pipe(vfs.dest(folder, options))
+    return observable
+  }
+  return f
 }
 
 export default destTransform

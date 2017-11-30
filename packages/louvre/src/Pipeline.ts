@@ -1,47 +1,43 @@
-import { List } from "immutable"
 import { SrcOptions, DestOptions } from "vinyl-fs"
 import { Files, Transform, destTransform, sourceTransform } from "./Transform"
-import { isArray } from "util"
+import * as most from "most"
 
-export type PipelineFromInput = (Pipeline | string | string[])[] | string
+class Pipeline implements PromiseLike<void> {
 
-export class Pipeline {
+  protected readonly _observable: Files
 
-  constructor(protected readonly _transforms = List<Transform>()) {}
-
-  transform(fn: Transform) {
-    return new Pipeline(this._transforms.push(fn))
+  constructor(observable: Files = most.never()) {
+    this._observable = observable
   }
 
-    const transforms = [...pipelines].reduce((acc, pipeline) => {
-      return acc.concat(pipeline._transforms)
-    }, this._transforms)
-    return new Pipeline(transforms)
+  then = ((...args: any[]) => this._observable.drain().then(...args)) as (typeof Promise.prototype.then)
+  catch = ((...args: any[]) => this._observable.drain().catch(...args)) as (typeof Promise.prototype.catch)
+
+  transform(...fns: Transform[]): Pipeline {
+    const newObservable = [...fns].reduce((obs, fn) => fn(obs), this._observable)
+    return new Pipeline(newObservable)
+  }
+
   merge(...pipelines: Pipeline[]): Pipeline {
+    const observables = [...pipelines].map(p => p._observable)
+    return this.transform(initial => most.mergeArray([initial, ...observables]))
   }
 
-  source(globs: string | string[], options?: SrcOptions) {
+  src(globs: string | string[], options?: SrcOptions): Pipeline {
+    if (globs.length === 0) return this
     return this.transform(sourceTransform(globs, options))
   }
 
-  dest(folder: string, options?: DestOptions) {
+  dest(folder: string, options?: DestOptions): Pipeline {
     return this.transform(destTransform(folder, options))
   }
 
-  async exec() {
-    await this._transforms.reduce((result, transform) => result.then(transform), Promise.resolve(<Files>List()))
+  exec(): Promise<void> {
+    return this._observable.drain()
   }
 
   static empty() {
     return new this()
-  }
-
-  static from(input: PipelineFromInput, options?: SrcOptions) {
-    const inputArray = isArray(input) ? [...input] : [ input ]
-    return (inputArray.reduce((pipeline: Pipeline, arg) => {
-      if (arg instanceof Pipeline) return pipeline.concat(arg)
-      return pipeline.source(arg, options)
-    }, this.empty()))
   }
 
 }

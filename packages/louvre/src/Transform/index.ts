@@ -1,8 +1,8 @@
 import * as File from "vinyl"
-import { List } from "immutable"
+import { Stream } from "most"
 
-export type Files = List<File>
-export interface Transform { (files?: Files): Files | Promise<Files> }
+export type Files = Stream<File>
+export interface Transform { (files: Files): Files }
 export default Transform
 
 export { default as sourceTransform } from "./source"

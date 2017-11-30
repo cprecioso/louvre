@@ -1,13 +1,15 @@
 import Transform from "."
-import { List } from "immutable"
+import * as File from "vinyl"
 import * as vfs from "vinyl-fs"
-import { array as getStream } from "get-stream"
+import * as most from "most"
+import { toObservable } from "../stream-helpers"
 
 function sourceTransform(globs: string | string[], options?: vfs.SrcOptions) {
-  return (async (files = List()) => {
-    const newFiles = await getStream(vfs.src(globs, options))
-    return files.concat(newFiles)
-  }) as Transform
+  const t: Transform = files => {
+    const newFiles = toObservable<File>(vfs.src(globs, options))
+    return most.merge(files, newFiles)
+  }
+  return t
 }
 
 export default sourceTransform
