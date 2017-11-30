@@ -1,5 +1,8 @@
 const louvre = require("./..")
 
-module.exports =
+const src =
   louvre("src/**/*")
-  .dest("lib")
+
+src.dest("lib-noop")
+
+module.exports = [src.dest("lib")]
