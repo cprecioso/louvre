@@ -13,11 +13,11 @@ export class Pipeline {
     return new Pipeline(this._transforms.push(fn))
   }
 
-  concat(...pipelines: Pipeline[]) {
     const transforms = [...pipelines].reduce((acc, pipeline) => {
       return acc.concat(pipeline._transforms)
     }, this._transforms)
     return new Pipeline(transforms)
+  merge(...pipelines: Pipeline[]): Pipeline {
   }
 
   source(globs: string | string[], options?: SrcOptions) {
