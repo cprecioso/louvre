@@ -6,6 +6,7 @@
   ],
   "main": "lib/index.js",
   "bin": "bin/louvre.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "npm run clean && tsc",
     "clean": "rm -rf lib",

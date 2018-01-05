@@ -18,7 +18,8 @@ function louvre(input: string | _Pipeline | (string | _Pipeline)[], options?: Sr
 }
 
 namespace louvre {
-  export const Pipeline: (typeof _Pipeline) = _Pipeline
+  export const Pipeline = _Pipeline
+  export type Pipeline = _Pipeline
 }
 
 export = louvre
