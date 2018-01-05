@@ -1,0 +1,29 @@
+{
+  "name": "louvre-cli",
+  "version": "0.0.1",
+  "files": [
+    "lib/*.js"
+  ],
+  "main": "lib/index.js",
+  "bin": {
+    "louvre": "lib/index.js"
+  },
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "clean": "rm -rf lib",
+    "watch": "npm run clean && tsc --watch"
+  },
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "interpret": "^1.1.0",
+    "liftoff": "^2.5.0",
+    "minimist": "^1.2.0",
+    "sver-compat": "^1.5.0",
+    "v8flags": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/minimist": "^1.2.0",
+    "@types/node": "^8.5.7",
+    "typescript": "^2.6.2"
+  }
+}

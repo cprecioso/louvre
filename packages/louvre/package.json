@@ -5,14 +5,17 @@
     "lib"
   ],
   "main": "lib/index.js",
-  "bin": "bin/louvre.js",
   "types": "lib/index.d.ts",
+  "bin": {
+    "louvre": "lib/bin.js"
+  },
   "scripts": {
     "build": "npm run clean && tsc",
     "clean": "rm -rf lib",
     "watch": "npm run clean && tsc --watch"
   },
   "dependencies": {
+    "louvre-cli": "^0.0.1",
     "most": "^1.7.2",
     "vinyl": "^2.1.0",
     "vinyl-fs": "^3.0.1"
