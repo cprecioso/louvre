@@ -2,7 +2,7 @@
   "name": "louvre",
   "version": "0.0.1",
   "main": "lib/index.js",
-  "bin": "bin.js",
+  "bin": "bin/louvre.js",
   "scripts": {
     "clean": "rm -rf lib",
     "build": "npm run clean && tsc",
