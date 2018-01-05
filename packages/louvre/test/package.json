@@ -1,8 +1,0 @@
-{
-  "name": "louvre-test",
-  "version": "0",
-  "private": true,
-  "dependencies": {
-    "louvre": "file:.."
-  }
-}
