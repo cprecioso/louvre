@@ -1,16 +1,16 @@
 {
   "name": "louvre",
   "version": "0.0.1",
-  "main": "lib/index.js",
-  "bin": "bin/louvre.js",
-  "scripts": {
-    "clean": "rm -rf lib",
-    "build": "npm run clean && tsc",
-    "watch": "npm run clean && tsc --watch"
-  },
   "files": [
     "lib"
   ],
+  "main": "lib/index.js",
+  "bin": "bin/louvre.js",
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "clean": "rm -rf lib",
+    "watch": "npm run clean && tsc --watch"
+  },
   "dependencies": {
     "most": "^1.7.2",
     "vinyl": "^2.1.0",

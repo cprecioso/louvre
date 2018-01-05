@@ -1,8 +1,12 @@
 {
   "name": "louvre",
   "private": true,
+  "scripts": {
+    "sort-package-json": "sort-package-json && lerna exec sort-package-json"
+  },
   "devDependencies": {
-    "lerna": "^2.5.1"
+    "lerna": "^2.5.1",
+    "sort-package-json": "^1.7.1"
   },
   "workspaces": [
     "packages/*"
