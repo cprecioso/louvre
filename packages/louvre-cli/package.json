@@ -1,9 +1,7 @@
 {
   "name": "louvre-cli",
   "version": "0.0.1",
-  "files": [
-    "lib/*.js"
-  ],
+  "files": ["lib/*.js"],
   "main": "lib/index.js",
   "bin": {
     "louvre": "lib/index.js"

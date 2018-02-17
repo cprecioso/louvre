@@ -20,9 +20,16 @@ declare module "sver-compat" {
   }
 
   export class SemverRange {
-    static match(range: SemverRange | string, version: Semver | string, unstable?: boolean): boolean
+    static match(
+      range: SemverRange | string,
+      version: Semver | string,
+      unstable?: boolean
+    ): boolean
     static isValid(range: string): boolean
-    static compare(r1: SemverRange | string, r2: SemverRange | string): 1 | -1 | 0
+    static compare(
+      r1: SemverRange | string,
+      r2: SemverRange | string
+    ): 1 | -1 | 0
 
     constructor(range: string)
 
@@ -39,7 +46,10 @@ declare module "sver-compat" {
     has(version: Semver | string, unstable?: boolean): boolean
     contains(otherRange: SemverRange | string): boolean
     intersect(otherRange: SemverRange | string): SemverRange | undefined
-    bestMatch(versions: (Semver | string)[], unstable?: boolean): Semver | undefined
+    bestMatch(
+      versions: (Semver | string)[],
+      unstable?: boolean
+    ): Semver | undefined
     toString(): string
   }
 }

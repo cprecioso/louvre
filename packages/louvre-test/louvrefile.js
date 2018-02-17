@@ -1,7 +1,6 @@
 const louvre = require("louvre")
 
-const src =
-  louvre("src/**/*")
+const src = louvre("src/**/*")
 
 src.dest("lib-noop")
 

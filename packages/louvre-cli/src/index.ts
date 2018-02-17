@@ -13,25 +13,25 @@ import debugFn from "./debug"
 const debug = debugFn("gulp-cli")
 
 const argv = minimist(process.argv.slice(2))
-const louvre =
-  new Liftoff({
-    name: "louvre",
-    configName: "louvrefile",
-    extensions: jsVariants,
-    v8flags: V8Flags
+const louvre = new Liftoff({
+  name: "louvre",
+  configName: "louvrefile",
+  extensions: jsVariants,
+  v8flags: V8Flags
+})
+  .on("require", (name: string) => debug("Loading", name))
+  .on("requireFail", (name: string) => debug("Unable to load", name))
+  .on("respawn", (flags: V8Flags.Flags, child: ChildProcess) => {
+    debug("Detected node flags:", flags)
+    debug("Respawned to PID:", child.pid)
   })
-    .on("require", (name: string) => debug("Loading", name))
-    .on("requireFail", (name: string) => debug("Unable to load", name))
-    .on("respawn", (flags: V8Flags.Flags, child: ChildProcess) => {
-      debug("Detected node flags:", flags)
-      debug("Respawned to PID:", child.pid)
-    })
-    .launch({
+  .launch(
+    {
       cwd: argv.cwd,
       configPath: argv.louvrefile,
-      require: argv.require,
+      require: argv.require
     },
-    function (env) {
+    function(env) {
       if (process.cwd() !== env.cwd) {
         process.chdir(env.cwd)
         debug("Working directory changed to", env.cwd)
@@ -43,11 +43,14 @@ const louvre =
       }
 
       const cliVersion = new Semver(pkg.version as string)
-      const localVersion = new Semver((env.modulePackage as any).version as string)
+      const localVersion = new Semver((env.modulePackage as any)
+        .version as string)
       if (!cliVersion.eq(localVersion)) {
         debug(`local louvre version is ${localVersion}`)
         debug(`global louvre-cli version is ${cliVersion}`)
-        debug(`Please bring them in sync. If not possible, use the locally installed louvre-cli.`)
+        debug(
+          `Please bring them in sync. If not possible, use the locally installed louvre-cli.`
+        )
         if (cliVersion.major === localVersion.major) {
           debug(`Trying to proceeed...`)
         } else process.exit(1)
@@ -65,4 +68,5 @@ const louvre =
           console.log(err)
           throw err
         })
-    })
+    }
+  )

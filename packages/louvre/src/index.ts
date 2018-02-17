@@ -9,8 +9,11 @@ function louvre(globs: string[], options?: SrcOptions): _Pipeline
 function louvre(pipeline: _Pipeline): _Pipeline
 function louvre(pipelines: _Pipeline[]): _Pipeline
 
-function louvre(input: string | _Pipeline | (string | _Pipeline)[], options?: SrcOptions): _Pipeline {
-  const arr = (!Array.isArray(input)) ? [input] : input
+function louvre(
+  input: string | _Pipeline | (string | _Pipeline)[],
+  options?: SrcOptions
+): _Pipeline {
+  const arr = !Array.isArray(input) ? [input] : input
   const globs = arr.filter(isString)
   const source = _Pipeline.empty().src(globs, options)
   const pipelines = arr.filter(isPipeline).concat([source])
