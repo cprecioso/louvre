@@ -16,15 +16,15 @@
   },
   "dependencies": {
     "louvre-cli": "^0.0.1",
-    "most": "^1.7.2",
+    "most": "^1.7.3",
     "vinyl": "^2.1.0",
-    "vinyl-fs": "^3.0.1"
+    "vinyl-fs": "^3.0.2"
   },
   "devDependencies": {
-    "@types/node": "^8.5.7",
+    "@types/node": "^9.4.6",
     "@types/vinyl": "^2.0.1",
     "@types/vinyl-fs": "^2.4.8",
-    "typescript": "^2.6.1"
+    "typescript": "^2.7.2"
   },
   "engines": {
     "node": ">=8"

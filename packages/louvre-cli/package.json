@@ -14,7 +14,7 @@
     "watch": "npm run clean && tsc --watch"
   },
   "dependencies": {
-    "chalk": "^2.3.0",
+    "chalk": "^2.3.1",
     "interpret": "^1.1.0",
     "liftoff": "^2.5.0",
     "minimist": "^1.2.0",
@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@types/minimist": "^1.2.0",
-    "@types/node": "^8.5.7",
-    "typescript": "^2.6.2"
+    "@types/node": "^9.4.6",
+    "typescript": "^2.7.2"
   }
 }
