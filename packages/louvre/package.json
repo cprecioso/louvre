@@ -1,6 +1,6 @@
 {
   "name": "louvre",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "files": ["lib"],
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -13,7 +13,7 @@
     "watch": "npm run clean && tsc --watch"
   },
   "dependencies": {
-    "louvre-cli": "^0.0.1",
+    "louvre-cli": "^0.0.2",
     "most": "^1.7.3",
     "vinyl": "^2.1.0",
     "vinyl-fs": "^3.0.2"
