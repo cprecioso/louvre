@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import Liftoff from "liftoff"
-import minimist from "minimist"
+import * as Liftoff from "liftoff"
+import * as minimist from "minimist"
 import { jsVariants } from "interpret"
-import V8Flags from "v8flags"
+import * as V8Flags from "v8flags"
 import { ChildProcess } from "child_process"
 import { Semver } from "sver-compat"
 import chalk from "chalk"
