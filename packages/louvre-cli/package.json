@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@types/minimist": "^1.2.0",
-    "@types/node": "^9.4.6",
-    "typescript": "^2.7.2"
+    "@types/node": "^10.9.4",
+    "typescript": "^3.0.3"
   }
 }
