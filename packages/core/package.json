@@ -8,7 +8,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "npm run clean && tsc",
-    "clean": "rm -rf lib",
+    "clean": "del-cli lib",
     "watch": "npm run clean && tsc --watch"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
     "@types/node": "^10.9.4",
     "@types/vinyl": "^2.0.1",
     "@types/vinyl-fs": "^2.4.8",
+    "del-cli": "^1.1.0",
     "typescript": "^3.0.3"
   },
   "engines": {

@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "npm run clean && tsc",
-    "clean": "rm -rf lib",
+    "clean": "del-cli lib",
     "watch": "npm run clean && tsc --watch"
   },
   "dependencies": {
@@ -19,6 +19,7 @@
     "@louvre/core": "^0.0.2"
   },
   "devDependencies": {
+    "del-cli": "^1.1.0",
     "typescript": "^3.0.3"
   },
   "engines": {

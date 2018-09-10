@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "npm run clean && tsc",
-    "clean": "rm -rf lib",
+    "clean": "del-cli lib",
     "watch": "npm run clean && tsc --watch"
   },
   "dependencies": {
@@ -24,6 +24,7 @@
   "devDependencies": {
     "@types/minimist": "^1.2.0",
     "@types/node": "^10.9.4",
+    "del-cli": "^1.1.0",
     "typescript": "^3.0.3"
   }
 }

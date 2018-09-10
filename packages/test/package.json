@@ -2,7 +2,12 @@
   "name": "@louvre/test",
   "version": "0.0.2",
   "private": true,
+  "scripts": {
+    "build": "npm run clean && louvre",
+    "clean": "del-cli lib"
+  },
   "devDependencies": {
+    "del-cli": "^1.1.0",
     "louvre": "^0.0.2"
   }
 }
