@@ -1,5 +1,5 @@
 {
-  "name": "louvre",
+  "name": "@louvre/umbrella",
   "private": true,
   "workspaces": [
     "packages/*"

@@ -1,13 +1,12 @@
 {
-  "name": "louvre",
+  "name": "@louvre/cli",
   "version": "0.0.2",
   "files": [
-    "lib"
+    "lib/*.js"
   ],
   "main": "lib/index.js",
-  "types": "lib/index.d.ts",
   "bin": {
-    "louvre": "lib/bin.js"
+    "louvre": "lib/index.js"
   },
   "scripts": {
     "build": "npm run clean && tsc",
@@ -15,18 +14,16 @@
     "watch": "npm run clean && tsc --watch"
   },
   "dependencies": {
-    "louvre-cli": "^0.0.2",
-    "most": "^1.7.3",
-    "vinyl": "^2.1.0",
-    "vinyl-fs": "^3.0.2"
+    "chalk": "^2.3.1",
+    "interpret": "^1.1.0",
+    "liftoff": "^2.5.0",
+    "minimist": "^1.2.0",
+    "sver-compat": "^1.5.0",
+    "v8flags": "^3.0.1"
   },
   "devDependencies": {
+    "@types/minimist": "^1.2.0",
     "@types/node": "^10.9.4",
-    "@types/vinyl": "^2.0.1",
-    "@types/vinyl-fs": "^2.4.8",
     "typescript": "^3.0.3"
-  },
-  "engines": {
-    "node": ">=8"
   }
 }

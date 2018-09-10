@@ -1,8 +1,8 @@
 {
-  "name": "louvre-test",
+  "name": "@louvre/test",
   "version": "0.0.2",
   "private": true,
   "devDependencies": {
-    "louvre": "^0.0.2"
+    "@louvre/core": "^0.0.2"
   }
 }
