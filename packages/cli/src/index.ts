@@ -10,7 +10,7 @@ import * as V8Flags from "v8flags"
 import debugFn from "./debug"
 const pkg = require("../package.json")
 
-const debug = debugFn("gulp-cli")
+const debug = debugFn(pkg.name)
 
 const argv = minimist(process.argv.slice(2))
 const louvre = new Liftoff({
