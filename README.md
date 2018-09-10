@@ -1,4 +1,5 @@
 # louvre
+
 A new build system that takes the best concepts from [gobble](https://github.com/gobblejs/gobble) and [gulp](https://github.com/gulpjs/gulp).
 
 ⚠️⚠️⚠️ **THIS IS _VERY MUCH_ A WORK IN PROGRESS** ⚠️⚠️⚠️
@@ -6,6 +7,7 @@ A new build system that takes the best concepts from [gobble](https://github.com
 ---
 
 Features / wishlist / to-do:
+
 - Imperative instead of declarative
 - Simple management of pipelines (join them putting them in the same array, expose them through `module.exports`)
 - Flowing pipelines (but streams are too verbose and finicky, let's just use observables and functions)

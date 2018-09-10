@@ -1,6 +1,9 @@
 {
   "name": "louvre",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "format": "yarn run sort-package-json && prettier --write '**/*.{js,json,ts}' '!packages/*/lib'",
     "sort-package-json": "sort-package-json && lerna exec sort-package-json"
@@ -10,8 +13,5 @@
     "prettier": "^1.14.2",
     "pretty-quick": "^1.6.0",
     "sort-package-json": "^1.15.0"
-  },
-  "workspaces": [
-    "packages/*"
-  ]
+  }
 }

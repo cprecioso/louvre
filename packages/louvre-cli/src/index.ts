@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
+import chalk from "chalk"
+import { ChildProcess } from "child_process"
+import { jsVariants } from "interpret"
 import * as Liftoff from "liftoff"
 import * as minimist from "minimist"
-import { jsVariants } from "interpret"
-import * as V8Flags from "v8flags"
-import { ChildProcess } from "child_process"
 import { Semver } from "sver-compat"
-import chalk from "chalk"
+import * as V8Flags from "v8flags"
+import debugFn from "./debug"
 const pkg = require("../package.json")
 
-import debugFn from "./debug"
 const debug = debugFn("gulp-cli")
 
 const argv = minimist(process.argv.slice(2))

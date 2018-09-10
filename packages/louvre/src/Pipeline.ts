@@ -1,7 +1,7 @@
 import * as most from "most"
 import * as File from "vinyl"
 import * as vfs from "vinyl-fs"
-import { toObservable, fromObservable } from "./stream-helpers"
+import { fromObservable, toObservable } from "./stream-helpers"
 
 export type TransformFunction = (
   files: most.Stream<File>

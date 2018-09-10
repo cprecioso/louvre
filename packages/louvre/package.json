@@ -1,7 +1,9 @@
 {
   "name": "louvre",
   "version": "0.0.2",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "bin": {

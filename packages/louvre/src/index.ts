@@ -1,5 +1,5 @@
-import _Pipeline from "./Pipeline"
 import _louvre from "./louvre"
+import _Pipeline from "./Pipeline"
 
 function louvre(): typeof _louvre {
   return _louvre.apply(null, arguments)
