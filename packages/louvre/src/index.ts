@@ -1,2 +1,1 @@
-import * as louvre from "@louvre/core"
-export = louvre
+export * from "@louvre/core"
