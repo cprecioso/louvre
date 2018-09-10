@@ -1,4 +1,4 @@
-const louvre = require("louvre")
+const { louvre } = require("louvre")
 
 const src = louvre("src/**/*")
 
