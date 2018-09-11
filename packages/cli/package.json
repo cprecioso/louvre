@@ -9,12 +9,13 @@
     "louvre": "lib/index.js"
   },
   "scripts": {
-    "build": "npm run clean && tsc",
+    "build": "npm run clean && tsc --build",
     "clean": "del-cli lib",
-    "watch": "npm run clean && tsc --watch"
+    "watch": "npm run clean && tsc --build --watch"
   },
   "dependencies": {
     "chalk": "^2.3.1",
+    "esm": "^3.0.82",
     "interpret": "^1.1.0",
     "liftoff": "^2.5.0",
     "minimist": "^1.2.0",

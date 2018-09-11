@@ -1,7 +1,7 @@
-const { louvre } = require("louvre")
+import louvre from "louvre"
 
 const src = louvre("src/**/*")
 
 src.dest("lib-noop")
 
-module.exports = [src.dest("lib")]
+export default [src.dest("lib")]

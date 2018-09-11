@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import Pipeline from "@louvre/core/lib/Pipeline"
 import chalk from "chalk"
 import { ChildProcess } from "child_process"
+import esm from "esm"
 import { jsVariants } from "interpret"
 import Liftoff from "liftoff"
 import minimist from "minimist"
@@ -34,9 +34,10 @@ new Liftoff({
       require: argv.require
     },
     async function(env) {
-      if (process.cwd() !== env.cwd) {
-        process.chdir(env.cwd)
-        debug("Working directory changed to", env.cwd)
+      const cwd = env.configBase || env.cwd
+      if (process.cwd() !== cwd) {
+        process.chdir(cwd)
+        debug("Working directory changed to", cwd)
       }
 
       if (!env.modulePath || !env.modulePackage) {
@@ -58,16 +59,11 @@ new Liftoff({
         } else process.exit(1)
       }
 
-      debug(`Starting...`)
-
       try {
-        const [{ louvre }, pipeline] = await Promise.all([
-          import(env.modulePath!) as Promise<typeof import("@louvre/core")>,
-          import(env.configPath!) as Promise<Pipeline>
-        ])
-
-        await louvre(pipeline).exec()
-
+        debug(`Starting...`)
+        await (esm(module)(
+          "./modes/build"
+        ) as typeof import("./modes/build")).build(env)
         debug(`Done!`)
       } catch (err) {
         debug(chalk`{red Error!}`)

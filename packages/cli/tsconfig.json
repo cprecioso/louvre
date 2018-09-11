@@ -1,8 +1,16 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "composite": true,
     "outDir": "lib",
-    "declaration": false
+    "rootDir": "src",
+    "declaration": true
   },
-  "include": ["src/**/*", "types/**/*"]
+  "include": ["src/**/*", "types/**/*"],
+  "exclude": ["src/modes/**/*"],
+  "references": [
+    {
+      "path": "./src/modes"
+    }
+  ]
 }

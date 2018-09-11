@@ -1,5 +1,5 @@
 import * as most from "most"
-import File from "vinyl"
+import * as File from "vinyl"
 import * as vfs from "vinyl-fs"
 import { fromObservable, toObservable } from "./stream-helpers"
 import { AoV, PoV, unAoV, unPoV } from "./util"
