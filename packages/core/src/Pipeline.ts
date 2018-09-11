@@ -14,7 +14,7 @@ class Pipeline {
    * This constructor is protected. Please use the exposed factories.
    */
   protected constructor(observable: Pipeline["_observable"]) {
-    this._observable = observable
+    this._observable = observable.multicast()
   }
 
   /**
