@@ -2,7 +2,7 @@ import * as most from "most"
 import File from "vinyl"
 import * as vfs from "vinyl-fs"
 import { fromObservable, toObservable } from "./stream-helpers"
-import { PoV, unPoV } from "./util"
+import { AoV, PoV, unAoV, unPoV } from "./util"
 
 class Pipeline {
   /**
@@ -40,6 +40,20 @@ class Pipeline {
       this._observable
     )
     return new Pipeline(newObservable)
+  }
+
+  /**
+   * Transforms the given `File`s one by one, into one or many files.
+   *
+   * Good for one-to-one and one-to-many transforms, sync or async.
+   */
+  map(fn: (file: File) => PoV<AoV<File>>): Pipeline {
+    return this.compose(files =>
+      files
+        .map(file => unPoV(fn(file)).then(unAoV))
+        .awaitPromises()
+        .flatMap(most.from)
+    )
   }
 
   /**
