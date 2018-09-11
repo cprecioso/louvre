@@ -1,19 +1,21 @@
 #!/usr/bin/env node
 
+import Pipeline from "@louvre/core/lib/Pipeline"
 import chalk from "chalk"
 import { ChildProcess } from "child_process"
 import { jsVariants } from "interpret"
-import * as Liftoff from "liftoff"
-import * as minimist from "minimist"
+import Liftoff from "liftoff"
+import minimist from "minimist"
 import { Semver } from "sver-compat"
-import * as V8Flags from "v8flags"
+import V8Flags from "v8flags"
+import pkg from "../package.json"
 import debugFn from "./debug"
-const pkg = require("../package.json")
 
 const debug = debugFn(pkg.name)
 
 const argv = minimist(process.argv.slice(2))
-const louvre = new Liftoff({
+
+new Liftoff({
   name: "louvre",
   configName: "louvrefile",
   extensions: jsVariants,
@@ -31,7 +33,7 @@ const louvre = new Liftoff({
       configPath: argv.louvrefile,
       require: argv.require
     },
-    function(env) {
+    async function(env) {
       if (process.cwd() !== env.cwd) {
         process.chdir(env.cwd)
         debug("Working directory changed to", env.cwd)
@@ -56,17 +58,21 @@ const louvre = new Liftoff({
         } else process.exit(1)
       }
 
-      debug(`Starting`)
-      Promise.all([
-        import(env.modulePath as string),
-        import(env.configPath as string)
-      ])
-        .then(([localLouvre, pipeline]) => localLouvre(pipeline).exec())
-        .then(() => debug(`Done`))
-        .catch(err => {
-          console.log(chalk`{red Error!}`)
-          console.log(err)
-          throw err
-        })
+      debug(`Starting...`)
+
+      try {
+        const [louvre, pipeline] = await Promise.all([
+          import(env.modulePath!) as Promise<typeof import("@louvre/core")>,
+          import(env.configPath!) as Promise<Pipeline>
+        ])
+
+        await louvre(pipeline).exec()
+
+        debug(`Done!`)
+      } catch (err) {
+        debug(chalk`{red Error!}`)
+        debug(err)
+        throw err
+      }
     }
   )
