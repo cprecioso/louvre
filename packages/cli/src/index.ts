@@ -61,7 +61,7 @@ new Liftoff({
       debug(`Starting...`)
 
       try {
-        const [louvre, pipeline] = await Promise.all([
+        const [{ louvre }, pipeline] = await Promise.all([
           import(env.modulePath!) as Promise<typeof import("@louvre/core")>,
           import(env.configPath!) as Promise<Pipeline>
         ])

@@ -1,2 +1,4 @@
-export { default, default as louvre } from "./louvre"
-export { default as Pipeline } from "./Pipeline"
+export * from "./factories"
+export * from "./louvre"
+import _Pipeline from "./Pipeline"
+export type Pipeline = _Pipeline
