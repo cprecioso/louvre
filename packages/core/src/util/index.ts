@@ -1,3 +1,7 @@
+export * from "./asAsyncGenerator"
+export * from "./asyncIterableToXstream"
+export * from "./nodeStreamsToXs"
+
 /**
  * A value or a Promise of it
  */

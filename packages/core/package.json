@@ -12,9 +12,9 @@
     "watch": "npm run clean && tsc --watch"
   },
   "dependencies": {
-    "most": "^1.7.3",
     "vinyl": "^2.1.0",
-    "vinyl-fs": "^3.0.2"
+    "vinyl-fs": "^3.0.2",
+    "xstream": "^11.7.0"
   },
   "devDependencies": {
     "@types/node": "^10.9.4",

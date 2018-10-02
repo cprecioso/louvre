@@ -1,7 +1,7 @@
 import { SrcOptions } from "vinyl-fs"
 import { merge, src } from "./factories"
 import Pipeline from "./Pipeline"
-import { unAoV } from "./util"
+import { AoV, unAoV } from "./util"
 
 export const isPipeline: typeof Pipeline.isPipeline = Pipeline.isPipeline.bind(
   Pipeline
@@ -33,10 +33,7 @@ function louvre(pipeline: Pipeline): Pipeline
  */
 function louvre(pipelines: Pipeline[]): Pipeline
 
-function louvre(
-  input: string | Pipeline | (string | Pipeline)[],
-  options?: SrcOptions
-): Pipeline {
+function louvre(input: AoV<string | Pipeline>, options?: SrcOptions): Pipeline {
   const arr = unAoV(input)
   const globs = arr.filter(isString)
   const source = src(globs, options)
