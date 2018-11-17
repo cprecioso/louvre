@@ -63,7 +63,7 @@ new Liftoff({
         debug(`Starting...`)
         await (esm(module)(
           "./modes/build"
-        ) as typeof import("./modes/build")).build(env)
+        ) as typeof import("./modes/build")).build(env, argv._)
         debug(`Done!`)
       } catch (err) {
         debug(chalk`{red Error!}`)
