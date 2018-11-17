@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "del-cli": "^1.1.0",
+    "esm": "^3.0.84",
     "louvre": "^0.0.2"
   }
 }
