@@ -2,15 +2,17 @@
   "name": "@louvre/cli",
   "version": "0.0.2",
   "files": [
+    "bin.js",
     "lib/*.js"
   ],
   "main": "lib/index.js",
   "bin": {
-    "louvre": "lib/index.js"
+    "louvre": "./bin.js"
   },
   "scripts": {
     "build": "npm run clean && tsc --build",
     "clean": "del-cli lib",
+    "prepare": "npm run build",
     "watch": "npm run clean && tsc --build --watch"
   },
   "dependencies": {

@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import chalk from "chalk"
 import { ChildProcess } from "child_process"
 import esm from "esm"

@@ -1,9 +1,0 @@
-{
-  "extends": "../../../../tsconfig.json",
-  "compilerOptions": {
-    "module": "esnext",
-    "composite": true,
-    "outDir": "../../lib/modes"
-  },
-  "include": ["./**/*", "../../types/**/*"]
-}
