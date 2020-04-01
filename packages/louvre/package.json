@@ -21,7 +21,7 @@
     "@louvre/core": "^0.0.2"
   },
   "devDependencies": {
-    "del-cli": "^1.1.0",
+    "del-cli": "^3.0.0",
     "typescript": "^3.0.3"
   },
   "engines": {
