@@ -19,7 +19,7 @@
     "chalk": "^2.3.1",
     "esm": "^3.0.82",
     "interpret": "^1.1.0",
-    "liftoff": "^2.5.0",
+    "liftoff": "^3.1.0",
     "minimist": "^1.2.0",
     "sver-compat": "^1.5.0",
     "v8flags": "^3.0.1"
